@@ -2,7 +2,7 @@
 /**
  * main - creates linked list but does not free
  *
- *
+ * Return: 0 on success
  *
  */
 

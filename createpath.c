@@ -7,7 +7,6 @@
 /*MAY OR MAY NOT USE SIMILAR CODE - Trentons*/
 path_list *create_path_list()
 {
-	extern char **environ;
 	path_list *HEAD = NULL;
 	path_list *new_node;
 	path_list *last;

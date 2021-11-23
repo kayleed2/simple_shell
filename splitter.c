@@ -7,17 +7,17 @@
 
 char **splitter(char *str)
 {
-	long unsigned int len = strlen(str);
+	unsigned long int len = _strlen(str);
 	int i;
 	char *string;
 	char **holder;
 
 	holder = malloc(sizeof(char) * (len + 3));
-    string = strtok(str, " ");
+	string = strtok(str, " ");
 	for (i = 0; string != NULL; i++)
-    {
+	{
 		holder[i] = string;
 		string = strtok(NULL, " ");
 	}
-    return (holder);
+	return (holder);
 }
