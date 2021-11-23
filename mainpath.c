@@ -6,6 +6,7 @@
  *
  */
 
+/*MAY OR MAY NOT USE SIMILAR CODE - Trentons*/
 int main(void)
 {
 	path_list *head = NULL;

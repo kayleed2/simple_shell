@@ -1,5 +1,10 @@
 #include "header.h"
+/**
+ * create_path_list - Create path list
+ * Return: Returns linked list
+ */
 
+/*MAY OR MAY NOT USE SIMILAR CODE - Trentons*/
 path_list *create_path_list()
 {
 	extern char **environ;
