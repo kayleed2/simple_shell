@@ -1,11 +1,18 @@
 #include "header.h"
+/**
+ * main - Finds if file can be found
+ * @ac: Number of args
+ * @argv: File to determine existence
+ * Return: 0 on success
+ */
+
 int main(int ac, char *argv[])
 {
 	int bytes = 1024;
 	int status;
 	char *cwdpath;
 	char *copypath;
-	int i = 1, x;
+	int x;
 	struct stat fileinfo;
 
 	if (ac != 2)
@@ -18,7 +25,7 @@ int main(int ac, char *argv[])
 		return (-1);
 	getcwd(cwdpath, bytes);
 	copypath = strdup(cwdpath);
-	for (x = 0; copypath[x] != '\0'; x++);
+	for (x = 0; copypath[x] != '\0'; x++)
 	copypath[x] = '/';
 	copypath = strcat(copypath, argv[1]);
 	status = stat(copypath, &fileinfo);

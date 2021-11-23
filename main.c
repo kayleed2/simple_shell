@@ -9,7 +9,6 @@ int main(void)
 	size_t bufsize = 1024;
 	pid_t pid;
 	char *buffer = malloc(bufsize * sizeof(char));
-	size_t n;
 	int status, i;
 	char **commands;
 	struct stat st;
@@ -42,7 +41,7 @@ int main(void)
 			execve(commands[0], commands, NULL);
 		}
 		printf("$ ");
+		free(buffer);
 	}
-free(buffer);
 return (0);
 }
