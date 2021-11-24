@@ -14,6 +14,6 @@ To use this simple shell program, simply run ./hsh on the command line.
 This will open up the recreated shell and can be used similarly to a
 standard UNIX shell.
 
-##Creators
+## Creators
 This project was contributed to, and maintained, by Kaylee Dao and
 Adam Clear.
