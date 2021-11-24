@@ -1,6 +1,6 @@
 # Recreating a Simple Shell in C Language
 
-###### The Project
+## The Project
 This project is a creation of a simple UNIX command interpreter using
 the C programming language.
 
