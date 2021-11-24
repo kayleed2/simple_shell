@@ -28,6 +28,11 @@ int main(void)
 			free(commands);
 			exit(0);
 		}
+		if (_strcmp(buffer, "env\n") == 0)
+			{
+				printenv();
+				break;
+			}
 		buffer[_strlen(buffer) - 1] = '\0';
 		commands = splitter(buffer);
 		if (stat(commands[0], &st) == 0)

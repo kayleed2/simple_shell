@@ -25,5 +25,6 @@ int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 char **splitter(char *str);
 extern char **environ;
+int printenv(void);
 
 #endif

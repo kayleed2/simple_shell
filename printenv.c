@@ -1,16 +1,15 @@
-#include <unistd.h>
-#include <stdio.h>
+#include "header.h"
 /**
  * main - Prints env
  * Return: 0 on success, -1 on failure
  */
 
-int main(void)
+int printenv(void)
 {
 	int i = 0;
 
-	while (environ[i])
+	while (environ[i] != NULL)
 		printf("%s\n", environ[i++]);
-
 	return (0);
+
 }
