@@ -26,5 +26,7 @@ char *_strdup(char *str);
 char **splitter(char *str);
 extern char **environ;
 int printenv(void);
+char **pathfinder(void);
+int printenv(void);
 
 #endif
