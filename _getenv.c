@@ -9,20 +9,16 @@ char * _getenv(char *var)
 	char *envvar = malloc(sizeof(char) * 1024);
 	char *envfinal = malloc(sizeof(char) * 1024);
 	char *envtok;
-	int x;
+	int x, len = _strlen(var);
 
 	for (x = 0; environ[x] != NULL; x++)
 	{
-		if (_strncmp(var, environ[x], 4) == 0)
+		if (strncmp(var, environ[x], len) == 0)
 		{
 			_strcpy(envvar, environ[x]);
 			envtok = strtok(envvar, "=");
 			envtok = strtok(NULL, "=");
 			_strcpy(envfinal, envtok);
-		}
-		else
-		{
-			envfinal = '\0';
 		}
 	}
 	return(envfinal);
