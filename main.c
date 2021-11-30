@@ -14,7 +14,6 @@ int main(void)
 	char *fullpath = malloc(sizeof(char) * 1024);
 	struct stat st;
 
-	printf("%s\n", thepath[x]);
 	if (buffer == NULL)
 		return (-1);
 	printf("$ ");
@@ -64,5 +63,5 @@ int main(void)
 		}
 		printf("$ ");
 	}
-return (0);
+	return (0);
 }

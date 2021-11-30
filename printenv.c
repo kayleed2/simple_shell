@@ -1,6 +1,6 @@
 #include "header.h"
 /**
- * main - Prints env
+ * printenv - Prints env
  * Return: 0 on success, -1 on failure
  */
 
