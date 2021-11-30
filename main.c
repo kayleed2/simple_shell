@@ -8,7 +8,7 @@ int main(void)
 	size_t bufsize = 1024;
 	pid_t pid;
 	char *buffer = malloc(bufsize * sizeof(char));
-	int status, i, x;
+	int status, x;
 	char **commands;
 	char **thepath = pathfinder();
 	char *fullpath = malloc(sizeof(char) * 1024);
