@@ -14,6 +14,7 @@ int main(void)
 	char *fullpath = malloc(sizeof(char) * 1024);
 	struct stat st;
 
+	printf("%s\n", thepath[x]);
 	if (buffer == NULL)
 		return (-1);
 	printf("$ ");
@@ -23,22 +24,13 @@ int main(void)
 		{
 			free(buffer);
 			free(fullpath);
-			for (x = 0; thepath[x] != NULL; x++)
-			{
-				free(thepath[x]);
-			}
 			free(thepath);
-			for (x = 0; commands[x] != NULL; x++)
-			{
-				free(commands[x]);
-			}
 			free(commands);
 			exit(0);
 		}
 		if (_strcmp(buffer, "env\n") == 0)
 			{
 				printenv();
-				break;
 			}
 		buffer[_strlen(buffer) - 1] = '\0';
 		commands = splitter(buffer);
@@ -71,7 +63,6 @@ int main(void)
 			execve(fullpath, commands, NULL);
 		}
 		printf("$ ");
-		free(buffer);
 	}
 return (0);
 }
