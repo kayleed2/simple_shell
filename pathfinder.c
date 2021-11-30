@@ -6,7 +6,7 @@
 char **pathfinder(void)
 {
 	char *pathtok;
-	char *path = getenv("PATH");
+	char *path = _getenv("PATH");
 	int x;
 	char **splitpath = malloc(sizeof(char) * 1024);
 
