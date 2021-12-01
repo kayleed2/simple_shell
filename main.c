@@ -16,7 +16,7 @@ int main(void)
 
 	if (buffer == NULL)
 		return (-1);
-	printf("$ ");
+	_printf("$ ");
 	while (getline(&buffer, &bufsize, stdin) != -1)
 	{
 		if (_strcmp(buffer, "exit\n") == 0)
@@ -28,9 +28,7 @@ int main(void)
 			exit(0);
 		}
 		if (_strcmp(buffer, "env\n") == 0)
-			{
 				printenv();
-			}
 		buffer[_strlen(buffer) - 1] = '\0';
 		commands = splitter(buffer);
 		if (stat(commands[0], &st) == 0)
@@ -58,10 +56,8 @@ int main(void)
 		if (pid != 0)
 			wait(&status);
 		if (pid == 0)
-		{
 			execve(fullpath, commands, NULL);
-		}
-		printf("$ ");
+		_printf("$ ");
 	}
 	return (0);
 }
