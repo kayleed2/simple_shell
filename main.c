@@ -16,21 +16,17 @@ int main(void)
 
 	if (buffer == NULL)
 		return (-1);
-	_printf("$ ");
+	_printf("($) ");
 	while (getline(&buffer, &bufsize, stdin) != -1)
 	{
+		buffer[_strlen(buffer) - 1] = '\0';
+		commands = splitter(buffer);
 		if (_strcmp(buffer, "exit\n") == 0)
 		{
-			free(buffer);
-			free(fullpath);
-			free(thepath);
-			free(commands);
-			exit(0);
+			break;
 		}
 		if (_strcmp(buffer, "env\n") == 0)
 				printenv();
-		buffer[_strlen(buffer) - 1] = '\0';
-		commands = splitter(buffer);
 		if (stat(commands[0], &st) == 0)
 		{
 			pid = fork();
@@ -57,7 +53,12 @@ int main(void)
 			wait(&status);
 		if (pid == 0)
 			execve(fullpath, commands, NULL);
-		_printf("$ ");
+		free(commands);
+		_printf("($) ");
 	}
+	free(buffer);
+	free(fullpath);
+	free(thepath);
+	free(commands);
 	return (0);
 }
