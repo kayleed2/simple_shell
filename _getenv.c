@@ -21,5 +21,6 @@ char *_getenv(char *var)
 			_strcpy(envfinal, envtok);
 		}
 	}
+	free(envvar);
 	return (envfinal);
 }
