@@ -1,10 +1,10 @@
 #include "header.h"
 /**
  * _getenv - gets the environment variable indicated
- * @var - input variable you want
+ * @var: input variable you want
  * Return: a string of the envrionment variable
  */
-char * _getenv(char *var)
+char *_getenv(char *var)
 {
 	char *envvar = malloc(sizeof(char) * 1024);
 	char *envfinal = malloc(sizeof(char) * 1024);
@@ -21,5 +21,5 @@ char * _getenv(char *var)
 			_strcpy(envfinal, envtok);
 		}
 	}
-	return(envfinal);
+	return (envfinal);
 }
