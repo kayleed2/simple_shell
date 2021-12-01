@@ -11,26 +11,26 @@ int _spec_r(va_list *args)
 	char *nope = "(null)";
 
 	if (!ptr_str)
+	{
+		while (*nope != '\0')
 		{
-			while (*nope != '\0')
-				{
-					_putchar(nope[x]);
-					x++;
-				}
+			_putchar(nope[x]);
+			x++;
 		}
+	}
 	else
+	{
+		x = _strlen(ptr_str);
+		for (i = 0; i < (x - 1); i++)
 		{
-			x = _strlen(ptr_str);
-			for (i = 0; i < (x - 1); i++)
-				{
-					ptr_str++;
-				}
-			while (l < x)
-				{
-					_putchar(*ptr_str);
-					ptr_str--;
-					l++;
-				}
+			ptr_str++;
 		}
+		while (l < x)
+		{
+			_putchar(*ptr_str);
+			ptr_str--;
+			l++;
+		}
+	}
 	return (x);
 }
