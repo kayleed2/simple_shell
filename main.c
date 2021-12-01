@@ -33,13 +33,14 @@ int main(void)
 				if (stat(fullpath, &st) == 0)
 				{
 					execute(fullpath, commands);
+					free(commands);
 					break;
 				}
 			}
 			if (thepath[x] == NULL)
-				_printf("%s: command not found\n", commands[0]);
+				_printf("%s: command not found\n", commands[0]), free(commands);
 		}
-		free(commands), _printf("($) ");
+		_printf("($) ");
 	}
 	free(buffer), free(fullpath), free(thepath), free(commands);
 	return (0);
