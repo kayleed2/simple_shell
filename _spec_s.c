@@ -12,9 +12,9 @@ int _spec_s(va_list *args)
 	if (!ptr_str)
 		ptr_str = "(null)";
 	while (ptr_str[x] != '\0')
-		{
-			_putchar(ptr_str[x]);
-			x++;
-		}
+	{
+		_putchar(ptr_str[x]);
+		x++;
+	}
 	return (x);
 }

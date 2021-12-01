@@ -14,9 +14,9 @@ int _spec_b(va_list *args)
 
 	i = 0;
 	while (stra[i] != '\0')
-		{
-			_putchar(stra[i]);
-			i++;
-		}
+	{
+		_putchar(stra[i]);
+		i++;
+	}
 	return (i);
 }

@@ -10,11 +10,11 @@ int print_min(void)
 
 	i = 0;
 	while (*int_min != '\0')
-		{
-			_putchar(*int_min);
-			i++;
-			int_min++;
-		}
+	{
+		_putchar(*int_min);
+		i++;
+		int_min++;
+	}
 	return (i);
 }
 
@@ -31,17 +31,17 @@ int _spec_di(va_list *args)
 	int stri = va_arg(*args, int);
 
 	if (stri == INT_MIN)
-		{
-			i = print_min();
-			return (i);
-		}
+	{
+		i = print_min();
+		return (i);
+	}
 	stra = _itoa(stri, s, 10);
 
 	i = 0;
 	while (stra[i] != '\0')
-		{
-			_putchar(stra[i]);
-			i++;
-		}
+	{
+		_putchar(stra[i]);
+		i++;
+	}
 	return (i);
 }

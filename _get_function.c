@@ -22,16 +22,16 @@ int (*_get_function(char s))(va_list * args)
 	char *letter = _chardup(s);
 
 	if (!s)
-		{
-			exit(99);
-		}
+	{
+		exit(99);
+	}
 	while (fun[i].spec != NULL)
+	{
+		if (_strcmp(letter, fun[i].spec) == 0)
 		{
-			if (_strcmp(letter, fun[i].spec) == 0)
-				{
-					return (fun[i].funct);
-				}
-			i++;
+			return (fun[i].funct);
 		}
-	return (NULL);
+		i++;
+	}
+return (NULL);
 }

@@ -13,32 +13,32 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 	if (!format)
-		{
-			return (-1);
-		}
+	{
+		return (-1);
+	}
 	while (format && format[x])
+	{
+		if (format[x] == '%')
 		{
-			if (format[x] == '%')
-				{
-					x++;
-					func = _get_function(format[x]);
-					if (func != NULL)
-						{
-							tot += func(&args);
-						}
-					else
-						{
-							tot +=_putchar('%');
-							tot += _putchar(format[x]);
-						}
-					x++;
-				}
+			x++;
+			func = _get_function(format[x]);
+			if (func != NULL)
+			{
+				tot += func(&args);
+			}
 			else
-				{
-					tot += _putchar(format[x]);
-					x++;
-				}
+			{
+				tot += _putchar('%');
+				tot += _putchar(format[x]);
+			}
+			x++;
 		}
+		else
+		{
+			tot += _putchar(format[x]);
+			x++;
+		}
+	}
 	va_end(args);
 	return (tot);
 }

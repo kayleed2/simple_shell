@@ -12,29 +12,29 @@ int _spec_R(va_list *args)
 
 	l = _strlen(s);
 	if (l == 0)
-		{
-			s = nope;
-		}
+	{
+		s = nope;
+	}
 	while (x < l)
+	{
+		if ((*s >= 'A' && *s <= 'M') || (*s >= 'a' && *s <= 'm'))
 		{
-			if ((*s >= 'A' && *s <= 'M') || (*s >= 'a' && *s <= 'm'))
-				{
-					_putchar((*s + '\0') + 13);
-					s++;
-					x++;
-				}
-			else if ((*s >= 'N' && *s <= 'Z') || (*s >= 'n' && *s <= 'z'))
-				{
-					_putchar((*s + '\0') - 13);
-					s++;
-					x++;
-				}
-			else
-				{
-					_putchar(*s);
-					s++;
-					x++;
-				}
+			_putchar((*s + '\0') + 13);
+			s++;
+			x++;
 		}
+		else if ((*s >= 'N' && *s <= 'Z') || (*s >= 'n' && *s <= 'z'))
+		{
+			_putchar((*s + '\0') - 13);
+			s++;
+			x++;
+		}
+		else
+		{
+			_putchar(*s);
+			s++;
+			x++;
+		}
+	}
 	return (x);
 }
