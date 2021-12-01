@@ -6,7 +6,7 @@
  */
 int _spec_r(va_list *args)
 {
-	int l = 0, i, x;
+	int l = 0, i, x = 0;
 	char *ptr_str = va_arg(*args, char *);
 	char *nope = "(null)";
 
