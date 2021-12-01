@@ -1,7 +1,7 @@
 #include "header.h"
 /**
  * pathfinder - splits all the elements of the path
- * Return - array of strings
+ * Return: array of strings that are the diff elements of the PATH
  */
 char **pathfinder(void)
 {
@@ -16,5 +16,5 @@ char **pathfinder(void)
 		splitpath[x] = pathtok;
 		pathtok = strtok(NULL, ":");
 	}
-	return(splitpath);
+	return (splitpath);
 }
