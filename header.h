@@ -47,6 +47,6 @@ char *_itoa(int n, char *str, int base);
 int _spec_r(va_list *args);
 int _spec_R(va_list *args);
 char *_chardup(char chr);
-int execute(char **commands);
+int execute(char *path, char **commands);
 
 #endif
