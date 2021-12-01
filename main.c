@@ -5,10 +5,9 @@
  */
 int main(void)
 {
-	pid_t pid;
 	size_t bufsize = 1024;
 	char *buffer = malloc(bufsize * sizeof(char));
-	int status, x;
+	int x;
 	char **commands, **thepath = pathfinder();
 	char *fullpath = malloc(sizeof(char) * 1024);
 	struct stat st;
@@ -24,7 +23,7 @@ int main(void)
 		if (_strcmp(buffer, "env\n") == 0)
 			printenv();
 		if (stat(commands[0], &st) == 0)
-			execute(commands);
+			execute(commands[0], commands);
 		else
 		{
 			for (x = 0; thepath[x] != NULL; x++)
@@ -33,11 +32,7 @@ int main(void)
 				_strcat(fullpath, commands[0]);
 				if (stat(fullpath, &st) == 0)
 				{
-					pid = fork();
-					if (pid != 0)
-						wait(&status);
-					if (pid == 0)
-						execve(fullpath, commands, NULL);
+					execute(fullpath, commands);
 					break;
 				}
 			}
