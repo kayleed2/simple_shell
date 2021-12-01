@@ -32,14 +32,18 @@ int main(void)
 				_strcpy(fullpath, thepath[x]), _strcat(fullpath, "/");
 				_strcat(fullpath, commands[0]);
 				if (stat(fullpath, &st) == 0)
+				{
+					pid = fork();
+					if (pid != 0)
+						wait(&status);
+					if (pid == 0)
+						execve(fullpath, commands, NULL);
 					break;
+				}
 			}
+			if (thepath[x] == NULL)
+				_printf("%s: command not found\n", commands[0]);
 		}
-		pid = fork();
-		if (pid != 0)
-			wait(&status);
-		if (pid == 0)
-			execve(fullpath, commands, NULL);
 		free(commands), _printf("($) ");
 	}
 	free(buffer), free(fullpath), free(thepath), free(commands);
