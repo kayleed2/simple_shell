@@ -7,7 +7,7 @@ int main(void)
 {
 	size_t bufsize = 1024;
 	char *buffer = malloc(bufsize * sizeof(char));
-	int x;
+	int x, i = 1;
 	char **commands, **thepath = pathfinder();
 	char *fullpath = malloc(sizeof(char) * 1024);
 	struct stat st;
@@ -39,7 +39,12 @@ int main(void)
 				}
 			}
 			if (thepath[x] == NULL)
-				_printf("%s: command not found\n", commands[0]), free(commands);
+			{
+				_printf("./hsh: %d: %s: not found\n", i, commands[0]);
+				if (isatty(0))
+					free(commands);
+				i++;
+			}
 		}
 		if (isatty(0))
 			_printf("($) ");
