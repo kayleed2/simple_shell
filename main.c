@@ -12,8 +12,8 @@ int main(void)
 	char *fullpath = malloc(sizeof(char) * 1024);
 	struct stat st;
 
-	if (buffer == NULL)
-		return (-1);
+	if ((buffer == NULL) || (fullpath == NULL))
+		free(fullpath), free(buffer), exit(-1);
 	if (isatty(0))
 		_printf("($) ");
 	while (getline(&buffer, &bufsize, stdin) != -1)
