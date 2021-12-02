@@ -14,7 +14,8 @@ int main(void)
 
 	if (buffer == NULL)
 		return (-1);
-	_printf("($) ");
+	if (isatty(0))
+		_printf("($) ");
 	while (getline(&buffer, &bufsize, stdin) != -1)
 	{
 		buffer[_strlen(buffer) - 1] = '\0', commands = splitter(buffer);
@@ -40,7 +41,8 @@ int main(void)
 			if (thepath[x] == NULL)
 				_printf("%s: command not found\n", commands[0]), free(commands);
 		}
-		_printf("($) ");
+		if (isatty(0))
+			_printf("($) ");
 	}
 	free(buffer), free(fullpath), free(thepath), free(commands);
 	return (0);
