@@ -41,7 +41,7 @@ int _spec_s(va_list *args);
 int _spec_di(va_list *args);
 int _spec_pct(va_list *args);
 int _spec_b(va_list *args);
-int (*_get_function(char s))(va_list * args);
+int (*_get_function(char s))(va_list *args);
 void reverse(char str[], int length);
 char *_itoa(int n, char *str, int base);
 int _spec_r(va_list *args);
