@@ -8,17 +8,15 @@
  * Return: Return value is numerical difference
  */
 
-int _strncmp(char *s1, char *s2, int n)
+int _strncmp(const char *s1, const char *s2, size_t n)
 {
-	int i;
+	int val = 0;
 
-	for (i = 0; i <= n; i++)
-	{
-		if (*s1 - *s2 == 0)
-		{
-			s1++;
-			s2++;
-		}
-	}
-	return (*s1 - *s2);
+	if (*s1 + n > *s2 + n)
+		val = 1;
+	else if (*s1 + n < *s2 + n)
+		val = -1;
+	else
+		val = 0;
+	return (val);
 }
