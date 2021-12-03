@@ -1,27 +1,20 @@
 #include "header.h"
 /**
- * _getenv - gets the environment variable indicated
- * @var: input variable you want
- * Return: a string of the envrionment variable
+ * _getenv - gets environmental variables
+ * @var: name
+ * Return: path on success
  */
 char *_getenv(char *var)
 {
-	char *envvar = malloc(sizeof(char) * 1024);
-	char *envfinal = malloc(sizeof(char) * 1024);
-	char *envtok = NULL;
-	int x, len = _strlen(var);
+	int i;
+	size_t l = _strlen(var);
 
-	for (x = 0; environ[x] != NULL; x++)
-	{
-		if (strncmp(var, environ[x], len) == 0)
-		{
-			_strcpy(envvar, environ[x]);
-			envtok = strtok(envvar, "=");
-			envtok = strtok(NULL, "=");
-			_strcpy(envfinal, envtok);
-		}
-	}
-	if (envvar != NULL)
-		free(envvar);
-	return (envfinal);
+	if (!__environ || !*var || strchr(var, '='))
+	return (NULL);
+
+	for (i = 0; __environ[i] && (strncmp(var, __environ[i], l)
+								 || __environ[i][l] != '='); i++);
+	if (__environ[i])
+		return (__environ[i] + l + 1);
+	return (NULL);
 }

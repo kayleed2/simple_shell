@@ -6,7 +6,7 @@
  */
 char *_chardup(char chr)
 {
-	char *p;
+	char *p = 0;
 	int i;
 
 	if (!chr)

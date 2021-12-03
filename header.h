@@ -50,5 +50,6 @@ char *_chardup(char chr);
 int execute(char *path, char **commands);
 int freedom(char *a, char *b, char **c, char **d);
 char *buildthepath(char *fullpath, char *material1, char *material2);
+int _strcmp2(char *s1, char *s2);
 
 #endif

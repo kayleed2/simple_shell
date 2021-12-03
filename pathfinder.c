@@ -17,7 +17,5 @@ char **pathfinder(void)
 		pathtok = strtok(NULL, ":");
 	}
 	splitpath[x] = '\0';
-	/*if (path != NULL)
-	  free(path);*/
 	return (splitpath);
 }
