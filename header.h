@@ -31,7 +31,7 @@ char *_strdup(char *str);
 char **splitter(char *str);
 extern char **environ;
 char **pathfinder(void);
-int printenv(void);
+void printenv(void);
 char *_getenv(char *var);
 int _strncmp(const char *s1, const char *s2, size_t n);
 int _putchar(char c);
