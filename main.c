@@ -35,6 +35,7 @@ int main(__attribute__((unused)) int ac, char *argv[])
 				if (stat(commands[0], &st) == 0)
 				{
 					execute(commands[0], commands);
+					free(commands);
 					continue;
 				}
 				else
