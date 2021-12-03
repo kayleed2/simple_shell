@@ -13,7 +13,7 @@ char *_getenv(char *var)
 
 	for (x = 0; environ[x] != NULL; x++)
 	{
-		if (_strncmp(var, environ[x], len) == 0)
+		if (strncmp(var, environ[x], len) == 0)
 		{
 			_strcpy(envvar, environ[x]);
 			envtok = strtok(envvar, "=");
