@@ -32,8 +32,15 @@ int main(__attribute__((unused)) int ac, char *argv[])
 				printenv();
 			else
 			{
-				for (x = 0; thepath[x] != NULL; x++)
+				if (stat(commands[0], &st) == 0)
 				{
+					execute(commands[0], commands);
+					continue;
+				}
+				else
+				{
+					for (x = 0; thepath[x] != NULL; x++)
+					{
 					_strcpy(fullpath, thepath[x]);
 					_strcat(fullpath, "/");
 					_strcat(fullpath, commands[0]);
@@ -44,6 +51,7 @@ int main(__attribute__((unused)) int ac, char *argv[])
 					}
 					else if (thepath[x + 1] == NULL)
 						_printf("%s: %d: %s: not found\n", argv[0], i, commands[0]), exitstatus = 127;
+					}
 				}
 			}
 		}
