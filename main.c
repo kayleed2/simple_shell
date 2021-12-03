@@ -32,7 +32,8 @@ int main(void)
 			{
 				for (x = 0; thepath[x] != NULL; x++)
 				{
-					_strcpy(fullpath, thepath[x]), _strcat(fullpath, "/");
+					_strcpy(fullpath, thepath[x]);
+					_strcat(fullpath, "/");
 					_strcat(fullpath, commands[0]);
 					if (stat(fullpath, &st) == 0)
 					{

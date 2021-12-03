@@ -9,10 +9,10 @@ char **splitter(char *str)
 {
 	unsigned long int len = _strlen(str);
 	int i;
-	char *string;
-	char **holder;
+	char *string = NULL;
+	char **holder = NULL;
 
-	holder = malloc(sizeof(char) * (len + 3));
+	holder = malloc(sizeof(char *) * (len * 2));
 	string = strtok(str, " ");
 	for (i = 0; string != NULL; i++)
 	{

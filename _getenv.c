@@ -8,7 +8,7 @@ char *_getenv(char *var)
 {
 	char *envvar = malloc(sizeof(char) * 1024);
 	char *envfinal = malloc(sizeof(char) * 1024);
-	char *envtok;
+	char *envtok = NULL;
 	int x, len = _strlen(var);
 
 	for (x = 0; environ[x] != NULL; x++)
@@ -21,6 +21,7 @@ char *_getenv(char *var)
 			_strcpy(envfinal, envtok);
 		}
 	}
-	free(envvar);
+	if (envvar != NULL)
+		free(envvar);
 	return (envfinal);
 }
