@@ -33,7 +33,7 @@ extern char **environ;
 char **pathfinder(void);
 void printenv(void);
 char *_getenv(char *var);
-int _strncmp(const char *s1, const char *s2, size_t n);
+int _strncmp(char *s1, char *s2, size_t n);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int _spec_c(va_list *args);

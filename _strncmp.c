@@ -8,7 +8,7 @@
  * Return: Return value is numerical difference
  */
 
-int _strncmp(char *s1, char *s2, int n)
+int _strncmp(char *s1,char *s2, size_t n)
 {
 	int val = 0;
 
