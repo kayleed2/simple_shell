@@ -3,11 +3,11 @@
  * main - Simple shell
  * Return: 0 on success
  */
-int main(void)
+int main()
 {
 	size_t bufsize = 1024;
 	char *buffer = malloc(sizeof(char) * 1024);
-	int x, i = 1;
+	int x, i = 0;
 	char **commands, **thepath;
 	char *fullpath = malloc(sizeof(char) * 1024);
 	struct stat st;
@@ -20,6 +20,7 @@ int main(void)
 		_printf("($) ");
 	while (getline(&buffer, &bufsize, stdin) != -1)
 	{
+		i++;
 		thepath = pathfinder();
 		if (_strcmp(buffer, "exit\n") == 0)
 		{
