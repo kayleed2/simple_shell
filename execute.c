@@ -8,12 +8,14 @@
 int execute(char *path, char **commands)
 {
 	pid_t pid;
-	int status;
+	int status, exitstatus;
 
 	pid = fork();
 	if (pid != 0)
 		wait(&status);
 	if (pid == 0)
 		execve(path, commands, NULL);
-	return (0);
+	if (WIFEXITED(status))
+		exitstatus = WEXITSTATUS(status);
+	return (exitstatus);
 }
