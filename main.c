@@ -16,7 +16,7 @@ int main(__attribute__((unused)) int ac, char *argv[])
 
 	if (buffer == NULL)
 		return (-1);
-	if (isatty(0))
+	if (isatty(STDIN_FILENO))
 		_printf("$ ");
 	while ((check = getline(&buffer, &bufsize, stdin)) != -1)
 	{
@@ -47,13 +47,13 @@ int main(__attribute__((unused)) int ac, char *argv[])
 				}
 			}
 		}
-		if (isatty(0))
+		if (isatty(STDIN_FILENO))
 			_printf("$ ");
 		free(commands);
 	}
 	if (check == -1)
 	{
-		if (isatty(0))
+		if (isatty(STDIN_FILENO))
 			_printf("\n");
 		free(buffer), free(fullpath), free(thepath), exit(exitstatus);
 	}
