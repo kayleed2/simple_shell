@@ -15,7 +15,7 @@ int main(void)
 	if (buffer == NULL)
 		return (-1);
 	if (isatty(0))
-		_printf("($) ");
+		_printf("$ ");
 	while ((check = getline(&buffer, &bufsize, stdin)) != -1)
 	{
 		i++;
@@ -45,7 +45,7 @@ int main(void)
 			}
 		}
 		if (isatty(0))
-			_printf("($) ");
+			_printf("$ ");
 		free(commands);
 	}
 	if (check == -1)
