@@ -19,5 +19,6 @@ char **splitter(char *str)
 		holder[i] = string;
 		string = strtok(NULL, " ");
 	}
+	holder[i] = '\0';
 	return (holder);
 }
