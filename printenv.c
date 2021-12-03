@@ -4,12 +4,10 @@
  * Return: 0 on success, -1 on failure
  */
 
-int printenv(void)
+void printenv(void)
 {
-	int i = 0;
+	int i;
 
-	while (environ[i] != NULL)
-		printf("%s\n", environ[i++]);
-	return (0);
-
+	for (i = 0; environ[i] != NULL; i++)
+		_printf("%s\n", environ[i]);
 }
