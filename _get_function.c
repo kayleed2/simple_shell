@@ -27,7 +27,7 @@ int (*_get_function(char s))(va_list * args)
 	}
 	while (fun[i].spec != NULL)
 	{
-		if (_strcmp(letter, fun[i].spec) == 0)
+		if (_strcmp2(letter, fun[i].spec) == 0)
 		{
 			free(letter);
 			return (fun[i].funct);

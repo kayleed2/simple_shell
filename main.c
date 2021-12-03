@@ -1,9 +1,11 @@
 #include "header.h"
 /**
 * main - Simple shell
+* @ac: Arg count
+* @argv: Arguments
 * Return: 0 on success
 */
-int main(void)
+int main(__attribute__((unused)) int ac, char *argv[])
 {
 	size_t bufsize = 1024;
 	char *buffer = malloc(bufsize * sizeof(char));
@@ -26,7 +28,7 @@ int main(void)
 			buffer[_strlen(buffer) - 1] = '\0', commands = splitter(buffer);
 			if (_strcmp(commands[0], "exit") == 0)
 				free(buffer), free(fullpath), free(thepath), free(commands), exit(exitstatus);
-			else if (_strcmp(commands[0], "env") == 0)
+			else if (_strcmp2(commands[0], "env") == 0)
 				printenv();
 			else
 			{
@@ -41,7 +43,7 @@ int main(void)
 						break;
 					}
 					else if (thepath[x + 1] == NULL)
-						_printf("./hsh: %d: %s: not found\n", i, commands[0]), exitstatus = 127;
+						_printf("%s: %d: %s: not found\n", argv[0], i, commands[0]), exitstatus = 127;
 				}
 			}
 		}
