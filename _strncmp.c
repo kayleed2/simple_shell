@@ -8,11 +8,7 @@
  * Return: Return value is numerical difference
  */
 
-<<<<<<< HEAD
 int _strncmp(char *s1,char *s2, size_t n)
-=======
-int _strncmp(char *s1, char *s2, int n)
->>>>>>> 56b0215c2e611e8ed69143c41bdc20ff03720e6c
 {
 	int val = 0;
 
