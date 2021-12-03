@@ -21,13 +21,25 @@ int main(__attribute__((unused)) int ac, char *argv[])
 	while ((check = getline(&buffer, &bufsize, stdin)) != -1)
 	{
 		i++;
+		/*if (*buffer == ' ')
+		{
+			for (x = 0; *buffer == ' '; x++)
+				buffer++;
+				}*/
 		if (_strcmp(buffer, "\n") == 0)
 		{}
 		else
 		{
 			buffer[_strlen(buffer) - 1] = '\0', commands = splitter(buffer);
+			/*buffer = buffer - x;*/
 			if (_strcmp(commands[0], "exit") == 0)
-				free(buffer), free(fullpath), free(thepath), free(commands), exit(exitstatus);
+			{
+				free(buffer);
+				free(fullpath);
+				free(thepath);
+				free(commands);
+				exit(exitstatus);
+			}
 			else if (_strcmp2(commands[0], "env") == 0)
 				printenv();
 			else
@@ -55,10 +67,11 @@ int main(__attribute__((unused)) int ac, char *argv[])
 					}
 				}
 			}
+			free(buffer);
 		}
 		if (isatty(STDIN_FILENO))
 			_printf("$ ");
-		free(commands);
+		/*free(commands);*/
 	}
 	if (check == -1)
 	{

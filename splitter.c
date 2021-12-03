@@ -7,7 +7,7 @@
 
 char **splitter(char *str)
 {
-	unsigned long int len = _strlen(str);
+	int len = _strlen(str);
 	int i;
 	char *string = NULL;
 	char **holder = NULL;
