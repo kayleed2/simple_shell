@@ -7,7 +7,7 @@ int main(void)
 {
 	size_t bufsize = 1024;
 	char *buffer = malloc(bufsize * sizeof(char));
-	int x, i = 0;
+	int x, check, exitstatus = 0, i = 0;
 	char **commands, **thepath = pathfinder();
 	char *fullpath = malloc(sizeof(char) * 1024);
 	struct stat st;
@@ -16,39 +16,43 @@ int main(void)
 		return (-1);
 	if (isatty(0))
 		_printf("($) ");
-	while (getline(&buffer, &bufsize, stdin) != -1)
+	while ((check = getline(&buffer, &bufsize, stdin)) != -1)
 	{
 		i++;
-		buffer[_strlen(buffer) - 1] = '\0', commands = splitter(buffer);
-		if (_strcmp(buffer, "exit\n") == 0)
-			break;
-		if (_strcmp(buffer, "env\n") == 0)
-			printenv();
-		if (stat(commands[0], &st) == 0)
-			execute(commands[0], commands);
+		if (_strcmp(buffer, "\n") == 0)
+		{}
 		else
 		{
-			for (x = 0; thepath[x] != NULL; x++)
+			buffer[_strlen(buffer) - 1] = '\0', commands = splitter(buffer);
+			if (_strcmp(commands[0], "exit") == 0)
+				free(buffer), free(fullpath), free(thepath), free(commands), exit(exitstatus);
+			else if (_strcmp(commands[0], "env") == 0)
+				printenv();
+			else
 			{
-				_strcpy(fullpath, thepath[x]), _strcat(fullpath, "/");
-				_strcat(fullpath, commands[0]);
-				if (stat(fullpath, &st) == 0)
+				for (x = 0; thepath[x] != NULL; x++)
 				{
-					execute(fullpath, commands);
-					free(commands);
-					break;
+					_strcpy(fullpath, thepath[x]), _strcat(fullpath, "/");
+					_strcat(fullpath, commands[0]);
+					if (stat(fullpath, &st) == 0)
+					{
+						exitstatus = execute(fullpath, commands);
+						break;
+					}
+					else if (thepath[x + 1] == NULL)
+						_printf("./hsh: %d: %s: not found\n", i, commands[0]), exitstatus = 127;
 				}
-			}
-			if (thepath[x] == NULL)
-			{
-				_printf("./hsh: %d: %s: not found\n", i, commands[0]);
-				if (isatty(0))
-					free(commands);
 			}
 		}
 		if (isatty(0))
 			_printf("($) ");
+		free(commands);
 	}
-	free(buffer), free(fullpath), free(thepath), free(commands);
+	if (check == -1)
+	{
+		if (isatty(0))
+			_printf("\n");
+		free(buffer), free(fullpath), free(thepath), exit(exitstatus);
+	}
 	return (0);
 }
