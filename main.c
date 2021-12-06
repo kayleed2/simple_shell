@@ -35,7 +35,7 @@ int main(__attribute__((unused)) int ac, char *argv[])
 				exit(exitstatus);
 			}
 			else if (_strcmp(commands[0], "env") == 0)
-			   printenv();
+				printenv();
 			else
 			{
 				if (stat(commands[0], &st) == 0)
@@ -61,7 +61,8 @@ int main(__attribute__((unused)) int ac, char *argv[])
 					}
 				}
 			}
-			free(buffer);
+			/*if (isatty(STDIN_FILENO))
+			  free(buffer);*/
 			free(commands);
 		}
 		if (isatty(STDIN_FILENO))
@@ -76,7 +77,10 @@ int main(__attribute__((unused)) int ac, char *argv[])
 		free(thepath);
 		exit(exitstatus);
 	}
-	free(fullpath);
-	free(thepath);
+	if (isatty(STDIN_FILENO))
+	{
+		free(fullpath);
+		free(thepath);
+	}
 	return (0);
 }
