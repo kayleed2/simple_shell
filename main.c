@@ -10,7 +10,7 @@ int main(__attribute__((unused)) int ac, char *argv[])
 	size_t bufsize = 1024;
 	char *buffer = malloc(bufsize * sizeof(char));
 	int x, check, exitstatus = 0, i = 0;
-	char **commands, **thepath = pathfinder();
+	char **commands = NULL, **thepath = pathfinder();
 	char *fullpath = malloc(sizeof(char) * 1024);
 	struct stat st;
 
@@ -25,14 +25,11 @@ int main(__attribute__((unused)) int ac, char *argv[])
 		{}
 		else
 		{
-			buffer[_strlen(buffer) - 1] = '\0', commands = splitter(buffer);
+			buffer[_strlen(buffer) - 1] = '\0';
+			commands = splitter(buffer);
 			if (_strcmp(commands[0], "exit") == 0)
 			{
-				free(buffer);
-				free(fullpath);
-				free(commands);
-				free(thepath);
-				exit(exitstatus);
+				break;
 			}
 			else if (_strcmp(commands[0], "env") == 0)
 				printenv();
@@ -61,26 +58,22 @@ int main(__attribute__((unused)) int ac, char *argv[])
 					}
 				}
 			}
-			/* if (isatty(STDIN_FILENO))
-			   free(buffer); */
 			free(commands);
 		}
 		if (isatty(STDIN_FILENO))
 			_printf("$ ");
 	}
-	if (check == -1)
-	{
 		if (isatty(STDIN_FILENO))
 			_printf("\n");
 		free(buffer);
 		free(fullpath);
-		free(thepath);
+		if (thepath && thepath[0])
+		{
+			free(thepath[0]);
+			free(thepath);
+		}
+		if (check != -1)
+			free(commands);
 		exit(exitstatus);
-	}
-	if (isatty(STDIN_FILENO))
-	{
-		free(fullpath);
-		free(thepath);
-	}
 	return (0);
 }
