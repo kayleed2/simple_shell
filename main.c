@@ -61,8 +61,8 @@ int main(__attribute__((unused)) int ac, char *argv[])
 					}
 				}
 			}
-			/*if (isatty(STDIN_FILENO))
-			  free(buffer);*/
+			/* if (isatty(STDIN_FILENO))
+			   free(buffer); */
 			free(commands);
 		}
 		if (isatty(STDIN_FILENO))

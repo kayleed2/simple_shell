@@ -7,17 +7,18 @@ char **pathfinder(void)
 {
 	char *pathtok;
 	char *path = _getenv("PATH");
-	/*char *pathcopy = _strdup(path);*/
+	char *pathcopy = malloc(sizeof(char) * 1024);
 	int x;
 	char **splitpath = malloc(sizeof(char) * PATH_MAX);
 
-	pathtok = strtok(path/*copy*/, ":");
+	_strcpy(pathcopy, path);
+	pathtok = strtok(pathcopy, ":");
 	for (x = 0; pathtok != NULL; x++)
 	{
 		splitpath[x] = pathtok;
 		pathtok = strtok(NULL, ":");
 	}
 	splitpath[x] = '\0';
-	/*free(pathcopy);*/
+	free(pathcopy);
 	return (splitpath);
 }
