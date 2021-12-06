@@ -12,10 +12,10 @@ char **pathfinder(void)
 
 	pathtok = strtok(path, ":");
 	for (x = 0; pathtok != NULL; x++)
-	{
-		splitpath[x] = pathtok;
-		pathtok = strtok(NULL, ":");
-	}
+		{
+			splitpath[x] = pathtok;
+			pathtok = strtok(NULL, ":");
+		}
 	splitpath[x] = '\0';
 	return (splitpath);
 }
