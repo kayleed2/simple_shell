@@ -30,12 +30,12 @@ int main(__attribute__((unused)) int ac, char *argv[])
 			{
 				free(buffer);
 				free(fullpath);
-				free(thepath);
 				free(commands);
+				free(thepath);
 				exit(exitstatus);
 			}
 			else if (_strcmp(commands[0], "env") == 0)
-				printenv();
+			   printenv();
 			else
 			{
 				if (stat(commands[0], &st) == 0)
@@ -48,30 +48,35 @@ int main(__attribute__((unused)) int ac, char *argv[])
 				{
 					for (x = 0; thepath[x] != NULL; x++)
 					{
-					_strcpy(fullpath, thepath[x]);
-					_strcat(fullpath, "/");
-					_strcat(fullpath, commands[0]);
-					if (stat(fullpath, &st) == 0)
-					{
-						exitstatus = execute(fullpath, commands);
-						break;
-					}
-					else if (thepath[x + 1] == NULL)
-						_printf("%s: %d: %s: not found\n", argv[0], i, commands[0]), exitstatus = 127;
+						_strcpy(fullpath, thepath[x]);
+						_strcat(fullpath, "/");
+						_strcat(fullpath, commands[0]);
+						if (stat(fullpath, &st) == 0)
+						{
+							exitstatus = execute(fullpath, commands);
+							break;
+						}
+						else if (thepath[x + 1] == NULL)
+							_printf("%s: %d: %s: not found\n", argv[0], i, commands[0]), exitstatus = 127;
 					}
 				}
 			}
 			free(buffer);
+			free(commands);
 		}
 		if (isatty(STDIN_FILENO))
 			_printf("$ ");
-		/*free(commands);*/
 	}
 	if (check == -1)
 	{
 		if (isatty(STDIN_FILENO))
 			_printf("\n");
-		free(buffer), free(fullpath), free(thepath), exit(exitstatus);
+		free(buffer);
+		free(fullpath);
+		free(thepath);
+		exit(exitstatus);
 	}
+	free(fullpath);
+	free(thepath);
 	return (0);
 }
