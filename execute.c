@@ -14,7 +14,7 @@ int execute(char *path, char **commands)
 	if (pid != 0)
 		wait(&status);
 	if (pid == 0)
-		execve(path, commands, NULL);
+		execve(path, commands, environ);
 	if (WIFEXITED(status))
 		exitstatus = WEXITSTATUS(status);
 	return (exitstatus);
