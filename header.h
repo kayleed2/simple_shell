@@ -52,5 +52,6 @@ int freedom(char *a, char *b, char **c, char **d);
 char *buildthepath(char *fullpath, char *material1, char *material2);
 int _strcmp2(char *s1, char *s2);
 char *_strchr(char *s, char c);
+void error(char *shellname, char *command, int errornum, int comcount);
 
 #endif

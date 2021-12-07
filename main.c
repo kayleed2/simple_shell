@@ -54,7 +54,7 @@ int main(__attribute__((unused)) int ac, char *argv[])
 							break;
 						}
 						else if (thepath[x + 1] == NULL)
-							_printf("%s: %d: %s: not found\n", argv[0], i, commands[0]), exitstatus = 127;
+							error(argv[0], commands[0], 1, i), exitstatus = 127;
 					}
 				}
 			}
