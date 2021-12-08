@@ -65,12 +65,10 @@ int main(__attribute__((unused)) int ac, char *argv[])
 	}
 		if (isatty(STDIN_FILENO))
 			_printf("\n");
-		free(buffer);
-		free(fullpath);
+		free(buffer), free(fullpath);
 		if (thepath && thepath[0])
 		{
-			free(thepath[0]);
-			free(thepath);
+			free(thepath[0]), free(thepath);
 		}
 		if (check != -1)
 			free(commands);
