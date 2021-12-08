@@ -8,7 +8,8 @@
 int execute(char *path, char **commands)
 {
 	pid_t pid;
-	int status, exitstatus;
+	int status;
+	int exitstatus;
 
 	pid = fork();
 	if (pid != 0)
